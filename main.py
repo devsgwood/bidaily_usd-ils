@@ -7,7 +7,7 @@ base_url = 'https://v6.exchangerate-api.com/v6'
 endpoint = f'{base_url}/{api_key}/latest/USD'
 
 # GroupMe bot details
-groupme_bot_id = os.getenv('GROUPME_BOT_ID')
+groupme_bot_id = os.getenv('BOT_ID')
 groupme_post_url = 'https://api.groupme.com/v3/bots/post'
 
 def get_exchange_rate():

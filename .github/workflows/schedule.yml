@@ -1,0 +1,23 @@
+name: Run Python Script Every 12 Hours
+
+on:
+  schedule:
+    - cron: '0 */12 * * *'  # Runs every 12 hours
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: Run script
+        env:
+          EXCHANGE_RATE_API_KEY: ${{ secrets.EXCHANGE_RATE_API_KEY }}
+          GROUPME_BOT_ID: ${{ secrets.GROUPME_BOT_ID }}
+        run: python main.py
